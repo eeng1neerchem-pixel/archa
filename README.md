@@ -33,3 +33,4 @@ Then navigate to `http://localhost:8000` in your browser.
 - **Celebration Mode**: Clicking **Yes** reveals a holiday celebration card, launches a canvas confetti explosion, and plays an authentic holiday jingle synthesized using the Web Audio API (100% self-contained, no external audio files needed).
 - **Winter Atmosphere**: Fullscreen HTML5 canvas falling snow particles, twinkling fairy lights garland, and an animated holiday Archa (tree).
 # archa
+# archa
