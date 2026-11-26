@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Go archa bayram with me? 🎄✨</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Canvas for Falling Snow -->
+  <canvas id="snow-canvas"></canvas>
+
+  <!-- Confetti Canvas for Celebratory Explosions -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Twinkling Fairy Lights Garland at the Top -->
+  <div class="lights-string" aria-hidden="true">
+    <div class="light-wire"></div>
+    <ul class="light-bulbs">
+      <li class="bulb bulb-red"></li>
+      <li class="bulb bulb-gold"></li>
+      <li class="bulb bulb-green"></li>
+      <li class="bulb bulb-blue"></li>
+      <li class="bulb bulb-red"></li>
+      <li class="bulb bulb-gold"></li>
+      <li class="bulb bulb-purple"></li>
+      <li class="bulb bulb-green"></li>
+      <li class="bulb bulb-blue"></li>
+      <li class="bulb bulb-gold"></li>
+      <li class="bulb bulb-red"></li>
+      <li class="bulb bulb-green"></li>
+    </ul>
+  </div>
+
+  <!-- Audio Toggle Button -->
+  <button id="sound-toggle" class="sound-toggle" aria-label="Toggle Sound" title="Sound Effects">
+    <span id="sound-icon">🔔</span>
+  </button>
+
+  <main class="page-container">
+    <div class="card" id="invite-card">
+      <!-- Animated Archa (Holiday Tree) Hero Illustration -->
+      <div class="tree-hero-container">
+        <div class="glow-backdrop"></div>
+        <svg class="archa-svg" viewBox="0 0 200 220" width="180" height="198" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Trunk -->
+          <rect x="88" y="180" width="24" height="32" rx="4" fill="#5D4037" />
+          <path d="M84 212H116" stroke="#4E342E" stroke-width="4" stroke-linecap="round"/>
+          
+          <!-- Bottom Tier -->
+          <path d="M30 185C35 180 50 178 65 180C75 168 125 168 135 180C150 178 165 180 170 185C175 190 160 195 100 195C40 195 25 190 30 185Z" fill="#14532D" opacity="0.6"/>
+          <path d="M32 185L100 115L168 185H32Z" fill="url(#tree-grad-3)"/>
+          <path d="M32 185Q65 198 100 188Q135 198 168 185" stroke="#BBF7D0" stroke-width="3" stroke-linecap="round"/>
+          
+          <!-- Middle Tier -->
+          <path d="M48 135L100 78L152 135H48Z" fill="url(#tree-grad-2)"/>
+          <path d="M48 135Q75 146 100 138Q125 146 152 135" stroke="#BBF7D0" stroke-width="3" stroke-linecap="round"/>
+          
+          <!-- Top Tier -->
+          <path d="M64 88L100 36L136 88H64Z" fill="url(#tree-grad-1)"/>
+          <path d="M64 88Q82 96 100 90Q118 96 136 88" stroke="#BBF7D0" stroke-width="2.5" stroke-linecap="round"/>
+          
+          <!-- Ornaments / Baubles -->
+          <circle cx="100" cy="62" r="5" fill="#EF4444" class="ornament orn-1"/>
+          <circle cx="82" cy="115" r="5.5" fill="#FACC15" class="ornament orn-2"/>
+          <circle cx="118" cy="118" r="5" fill="#38BDF8" class="ornament orn-3"/>
+          <circle cx="65" cy="165" r="6" fill="#F43F5E" class="ornament orn-4"/>
+          <circle cx="102" cy="155" r="5.5" fill="#FBBF24" class="ornament orn-5"/>
+          <circle cx="138" cy="168" r="6" fill="#A855F7" class="ornament orn-6"/>
+          
+          <!-- Tinsel garland paths -->
+          <path d="M78 80Q100 92 122 80" stroke="#FDE047" stroke-width="2" stroke-dasharray="2 3" opacity="0.85"/>
+          <path d="M58 128Q100 148 142 128" stroke="#FDE047" stroke-width="2.5" stroke-dasharray="2 3" opacity="0.85"/>
+          <path d="M42 176Q100 202 158 176" stroke="#FDE047" stroke-width="2.5" stroke-dasharray="2 3" opacity="0.85"/>
+          
+          <!-- Star on Top -->
+          <g class="star-topper" id="star-topper">
+            <polygon points="100,14 104,26 117,26 107,34 111,46 100,38 89,46 93,34 83,26 96,26" fill="#FBBF24" />
+            <polygon points="100,18 103,27 112,27 105,33 108,41 100,35 92,41 95,33 88,27 97,27" fill="#FEF08A" />
+            <circle cx="100" cy="30" r="14" fill="#FDE047" opacity="0.3" filter="url(#glow)"/>
+          </g>
+
+          <!-- Gradients & Filters -->
+          <defs>
+            <linearGradient id="tree-grad-1" x1="100" y1="36" x2="100" y2="88" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#15803D" />
+              <stop offset="1" stop-color="#166534" />
+            </linearGradient>
+            <linearGradient id="tree-grad-2" x1="100" y1="78" x2="100" y2="135" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#166534" />
+              <stop offset="1" stop-color="#14532D" />
+            </linearGradient>
+            <linearGradient id="tree-grad-3" x1="100" y1="115" x2="100" y2="185" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#14532D" />
+              <stop offset="1" stop-color="#052E16" />
+            </linearGradient>
+            <filter id="glow" x="70" y="0" width="60" height="60" filterUnits="userSpaceOnUse">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Main Question -->
+      <h1 class="main-question">
+        Go <span class="highlight-text">archa bayram</span> with me?
+      </h1>
+
+      <!-- Interactive Buttons Row -->
+      <div class="actions-wrapper" id="actions-wrapper">
+        <!-- Yes Option: strictly stationary -->
+        <button id="yes-btn" class="btn btn-yes">
+          <span class="btn-shine"></span>
+          <span class="btn-text">Yes</span>
+        </button>
+
+        <!-- No Option: elusive and evasive (stays strictly within window) -->
+        <div class="no-btn-slot" id="no-btn-slot">
+          <button id="no-btn" class="btn btn-no">
+            <span class="btn-text" id="no-btn-text">No</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Celebration Modal Overlay (Shown when YES is clicked) -->
+  <div class="celebration-overlay" id="celebration-overlay" aria-hidden="true">
+    <div class="celebration-card">
+      <div class="celebration-header">
+        <span class="party-emoji">🎉</span>
+        <span class="party-emoji">🎄</span>
+        <span class="party-emoji">🥳</span>
+      </div>
+      <h2 class="celebration-title">YAAAY! 🥳🎄</h2>
+      <p class="celebration-subtitle">
+        Archa bayramga birga boramiz! 🎪✨
+      </p>
+
+      <div class="celebration-actions">
+        <button id="confetti-replay-btn" class="btn btn-replay">
+          More Confetti! 🎊
+        </button>
+        <button id="reset-btn" class="btn btn-outline">
+          Ask again ↺
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
